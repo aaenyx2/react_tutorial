@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './Spinner.css'
 import Movie from './Movie';
 
 class App extends Component {
@@ -46,12 +47,19 @@ class App extends Component {
         //fetch하면 promise 컨셉이 생기고, promise를 이용하면 event 시나리오에 따라 관리 가능
     }
 
-
+    _Spinner(){
+        return(
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        )
+    }
 
     render() {
         return (
             <div className = {this.state.movies? "App" : "App--loading" }>
-                {this.state.movies? this._renderMovies() : "Loading" }
+                {this.state.movies? this._renderMovies() : this._Spinner() }
             </div>
         );
     }
